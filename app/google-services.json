@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "402922559324",
+    "project_id": "student-link-b42ac",
+    "storage_bucket": "student-link-b42ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402922559324:android:e87f9bf6895cf950339399",
+        "android_client_info": {
+          "package_name": "com.example.studentlink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxpCJI6aydlMHoitdf-dmDx2ilPjfJyd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402922559324:android:fe873d53a5dff469339399",
+        "android_client_info": {
+          "package_name": "com.example.studentmathlink"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxpCJI6aydlMHoitdf-dmDx2ilPjfJyd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
