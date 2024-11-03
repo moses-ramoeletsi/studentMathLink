@@ -25,7 +25,7 @@ import java.util.Locale;
 
 public class Profile extends AppCompatActivity {
 
-    private TextView usernameTextView, emailTextView, scoreTextView, testTimeTakenView, testDateTakenView, gradeTextView, addressTextView, phoneNumberTextView;
+    private TextView usernameTextView, emailTextView, scoreTextView, testTimeTakenView, testDateTakenView, gradeTextView, addressTextView, phoneNumberTextView, ratingScoreTextView,ratingCommentTextView;
     private FirebaseFirestore firestore;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
@@ -48,6 +48,8 @@ public class Profile extends AppCompatActivity {
         testTimeTakenView = findViewById(R.id.testTimeTakenView);
         gradeTextView = findViewById(R.id.gradeTextView);
         logoutButton = findViewById(R.id.logoutButton);
+        ratingScoreTextView = findViewById(R.id.ratingScoreTextView);
+        ratingCommentTextView = findViewById(R.id.ratingCommentTextView);
 
         firestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -147,6 +149,24 @@ public class Profile extends AppCompatActivity {
                     .addOnFailureListener(e -> {
                         e.printStackTrace();
                     });
+
+            firestore.collection("feedback").whereEqualTo("userId", userId)
+                    .get()
+                    .addOnSuccessListener(queryDocumentSnapshots -> {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            for (com.google.firebase.firestore.QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                                Long ratingScore = document.getLong("rating");
+                                String ratingComment = document.getString("feedback");
+
+                                ratingScoreTextView.setText("Rating Score: " + (ratingScore != null ? ratingScore : "Not provided"));
+                                ratingCommentTextView.setText("Rating Comment: " + (ratingComment != null ? ratingComment : "Not provided"));
+                            }
+                        } else {
+                            ratingScoreTextView.setText("Rating Score: Not available");
+                            ratingCommentTextView.setText("Rating Comment: Not available");
+                        }
+                    })
+                    .addOnFailureListener(e -> e.printStackTrace());
         }
     }
 }

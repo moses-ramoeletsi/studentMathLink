@@ -11,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Geometry extends AppCompatActivity {
     private TextView geometryContent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
